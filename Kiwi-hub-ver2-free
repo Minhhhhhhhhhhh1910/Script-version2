@@ -1,630 +1,399 @@
-_G.Version = "Version: 2.2.4"
-
-if getgenv().AntiLag then
-	local renderStepped = game:GetService("RunService").RenderStepped
-	local function GetFPS() 
-		renderStepped:Wait() 
-		local V = 0 for _ = 1, 5 do V += 1 / renderStepped:Wait() 
-		end return math.round(V / 5) 
-	end
-	spawn(function()setfpscap(GetFPS())end)
-end
--- //https://anotepad.com/notes/nsa4bmih
-loadstring(game:HttpGet(('https://raw.githubusercontent.com/Nttvlog112/ntt/main/A%20code%20key%20script%20NTT%20HUB')))()
---webhook
-loadstring(game:HttpGet(('https://bitbucket.org/ntt-code/ntt/raw/5978d7fd0a981dd1116506bf2e7f8a33931fc6d6/Webhook%20key')))()
-if game:GetService("CoreGui"):FindFirstChild("UIGUI") then
-_G.check1 = true
-_G.check2 = true
-_G.check3 = true
-_G.check4= true
-else
-_G.check1 = false
-_G.check2 = false
-_G.check3 = false
-_G.check4= false
-end
-
--- save key
-
-_G.Settings = {
-    checkkey = {
-        ["_G.loadkey"] = {""},     
-    },
-    }
+do
+    local Babix = game.CoreGui:FindFirstChild("ThunderScreen");if Babix then Babix:Destroy();end
+    end
     
-    function LoadSettings()
-    if readfile and writefile and isfile and isfolder then
-        if not isfolder("KIWI HUB") then
-            makefolder("KIWI HUB")
-        end
-        if not isfolder("KIWI HUB/Save Key/") then
-            makefolder("KIWI HUB/Save Key/")
-        end
-        if not isfile("KIWI HUB/Save Key/Key.json") then
-            writefile("KIWI HUB/Save Key/Key.json", game:GetService("HttpService"):JSONEncode(_G.Settings))
-        else
-            local Decode = game:GetService("HttpService"):JSONDecode(readfile("NTT HUB/Save Key/Key.json"))
-            for i,v in pairs(Decode) do
-                _G.Settings[i] = v
-            end
-        end
-    else
-        return warn("Status : Undetected Executor")
-    end
-end
-
-function SaveSettings()
-    if readfile and writefile and isfile and isfolder then
-        if not isfile("KIWI HUB/Save Key/Key.json") then
-            LoadSettings()
-        else
-            local Decode = game:GetService("HttpService"):JSONDecode(readfile("NTT HUB/Save Key/Key.json"))
-            local Array = {}
-            for i,v in pairs(_G.Settings) do
-                Array[i] = v
-            end
-            writefile("KIWI HUB/Save Key/Key.json", game:GetService("HttpService"):JSONEncode(Array))
-        end
-    else
-        return warn("Status : Undetected Executor")
-    end
-end
-
-LoadSettings()
-
--------------------------------------------------------------
-
-local UIGUI = Instance.new("ScreenGui")
-main= Instance.new("Frame")
- UImain = Instance.new("UICorner")
- UIbar1 = Instance.new("UICorner")
- UIbar2 = Instance.new("UICorner")
- UIbar3 = Instance.new("UICorner")
- UIbar4 = Instance.new("UICorner")
- 
- UIbar= Instance.new("UICorner")
- bar =Instance.new("TextLabel")
- exit = Instance.new("TextButton")
-bar_1=Instance.new("TextLabel")
-bar_2=Instance.new("Frame")
-bar_3=Instance.new("Frame")
-bar_4=Instance.new("Frame")
-t_1 =Instance.new("TextLabel")
-t_2 =Instance.new("TextLabel")
-
-tt_name=Instance.new("TextLabel")
-tt_1=Instance.new("TextLabel")
-
-key_t=Instance.new("TextLabel")
-key_tb =Instance.new("TextBox")
-key_b =Instance.new("TextButton")
-key_g =Instance.new("TextButton")
-
-load_t=Instance.new("TextLabel")
-load_t1=Instance.new("TextLabel")
-load_t2=Instance.new("TextLabel")
-load_l=Instance.new("TextButton")
-load_b1=Instance.new("TextButton")
-load_b2=Instance.new("TextButton")
-
-
-
-UIGUI.Name = "UIGUI"
-UIGUI.Parent = game:WaitForChild("CoreGui")
-UIGUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
-main.Name = "main"
-main.Parent = UIGUI
-main.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-main.Position = UDim2.new(0.258126051, 0, 0.228999169, 0)
-main.Size = UDim2.new(0, 500, 0, 200)
-main.BackgroundTransparency = 0.7
-UImain.Parent = main
-
-bar.Parent = main
-bar.BackgroundColor3 = Color3.fromRGB(5, 5, 5)
-bar.Size = UDim2.new(0, 498, 0, 30)
-bar.BorderColor3 = Color3.fromRGB(250, 250, 250)
-bar.Font = Enum.Font.Ubuntu
-bar.Text = "   KIWI HUB | Key"
-bar.TextColor3 = Color3.fromRGB(255, 255, 255)
-bar.TextSize = 14.000
-bar.TextWrapped = true
-bar.TextXAlignment = Enum.TextXAlignment.Left
-UIbar.Parent = bar
-
-exit.Name = "exit"
-exit.Parent = bar
-exit.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
-exit.Position = UDim2.new(0.940000000, 0, 0.000000000, 0)
-exit.Size = UDim2.new(0, 30, 0, 30)
-exit.Font = Enum.Font.Ubuntu
-exit.Text = "X"
-exit.TextColor3 = Color3.fromRGB(250, 255, 250)
-exit.BackgroundTransparency = 1
-exit.TextSize = 20.000
-exit.BorderColor3 = Color3.fromRGB(250, 250, 250)
-exit.MouseButton1Down:connect(function()
-main.Visible = false
-end)
-
-bar_1.Name = "bar_1"
-bar_1.Parent = main
-bar_1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-bar_1.Position = UDim2.new(0.000000000, 0, 0.180000000, 0)
-bar_1.Size = UDim2.new(0, 120, 0, 160)
-bar_1.Font = Enum.Font.Ubuntu
-bar_1.Text = "Script KIWI HUB|SUPPORT CÀY THUÊ"
-bar_1.TextColor3 = Color3.fromRGB(255, 255, 255)
-bar_1.TextSize = 14.000
-bar_1.TextWrapped = true
-bar_1.TextYAlignment = Enum.TextYAlignment.Top
-UIbar1.Parent = bar_1
-
-bar_2.Name = "bar_2"
-bar_2.Parent = main
-bar_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-bar_2.Position = UDim2.new(0.250000000, 0, 0.180000000, 0)
-bar_2.Size = UDim2.new(0, 248, 0, 160)
-UIbar2.Parent = bar_2
-
-bar_3.Name = "bar_3"
-bar_3.Parent = main
-bar_3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-bar_3.Position = UDim2.new(0.755000000, 0, 0.180000000, 0)
-bar_3.Size = UDim2.new(0, 120, 0, 160)
-UIbar3.Parent = bar_3
-
-tt_name.Name = "tt_name"
-tt_name.Parent = bar_1
-tt_name.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-tt_name.Size = UDim2.new(0, 120, 0, 30)
-tt_name.Position = UDim2.new(0, 0, 0.150000000, 0)
-tt_name.BackgroundTransparency = 1
-tt_name.Font = Enum.Font.Ubuntu
-tt_name.Text = "Thông Báo"
-tt_name.TextColor3 = Color3.fromRGB(255, 255, 255)
-tt_name.TextSize = 14.000
-tt_name.TextWrapped = true
-
-tt_1.Name = "tt_1"
-tt_1.Parent = bar_1
-tt_1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-tt_1.Size = UDim2.new(0, 120, 0, 30)
-tt_1.Position = UDim2.new(0, 0, 0.270000000, 0)
-tt_1.BackgroundTransparency = 1
-tt_1.Font = Enum.Font.Ubuntu
-tt_1.Text = _G.tt
-tt_1.TextColor3 = Color3.fromRGB(255, 255, 255)
-tt_1.TextSize = 14.000
-tt_1.TextWrapped = true
-
-t_1.Name = "t_1"
-t_1.Parent = bar_3
-t_1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-t_1.Size = UDim2.new(0, 120, 0, 30)
-t_1.BackgroundTransparency = 1
-t_1.Font = Enum.Font.Ubuntu
-t_1.Text = "Credit"
-t_1.TextColor3 = Color3.fromRGB(255, 255, 255)
-t_1.TextSize = 14.000
-t_1.TextWrapped = true
-
-t_2.Name = "t_2"
-t_2.Parent = bar_3
-t_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-t_2.Position = UDim2.new(0, 0, 0.150000000, 0)
-t_2.Size = UDim2.new(0, 120, 0, 30)
-t_2.BackgroundTransparency = 1
-t_2.Font = Enum.Font.Ubuntu
-t_2.Text = "KIWI HUB"
-t_2.TextColor3 = Color3.fromRGB(255, 255, 255)
-t_2.TextSize = 14.000
-t_2.TextWrapped = true
-t_2.TextXAlignment = Enum.TextXAlignment.Left
-
-key_t.Name = "key_t"
-key_t.Parent = bar_2
-key_t.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-key_t.Position = UDim2.new(0.2, 0, 0.130000000, 0)
-key_t.Size = UDim2.new(0, 150, 0, 30)
-key_t.Font = Enum.Font.Ubuntu
-key_t.Text = "KIWI HUB | Key"
-key_t.TextColor3 = Color3.fromRGB(255, 255, 255)
-key_t.BorderColor3 = Color3.fromRGB(250, 250, 250)
-key_t.TextSize = 14.000
-
-key_tb.Name = "key_tb"
-key_tb.Parent = bar_2
-key_tb.BackgroundColor3 = Color3.fromRGB(250, 250, 250)
-key_tb.Position = UDim2.new(0.2, 0, 0.360000000, 0)
-key_tb.Size = UDim2.new(0, 150, 0, 25)
-key_tb.Font = Enum.Font.Ubuntu
-key_tb.Text = "NHẬP KEY"
-key_tb.BorderColor3 = Color3.fromRGB(0,0,0)
-key_tb.TextSize = 14.000
-
-key_b.Name = "key_b"
-key_b.Parent = bar_2
-key_b.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-key_b.Position = UDim2.new(0.2, 0, 0.550000000, 0)
-key_b.Size = UDim2.new(0, 150, 0, 27)
-key_b.Font = Enum.Font.Ubuntu
-key_b.Text = "Check Key"
-key_b.TextColor3 = Color3.fromRGB(255, 255, 255)
-key_b.BorderColor3 = Color3.fromRGB(250, 250, 250)
-key_b.TextSize = 14.000
-key_b.MouseButton1Down:connect(function()
-if key_tb.Text == _G.key then
-
-_G.Settings.checkkey["_G.loadkey"] = key_tb.Text
-SaveSettings()
-
-bar.Text = "   KIWI | Load"
-bar_4.Visible = true
-
-if _G.check1 == false then
-_G.check1 = true
-                    local HttpService = game:GetService("HttpService")
-                    local Data =
-                        {                    
-                            ["embeds"]= {
-                                {            
-                                    ["title"]= "Thông Báo";                                                                 
-                                    ["color"]= tonumber(0x7269da);
-                                    
-                                    ["fields"]= {                    
-                                    {
-                                            ["name"]= "Name Player",
-                                            ["value"]= "```Name : "..game.Players.LocalPlayer.DisplayName.."```";
-                                            ["inline"]= true
-                                        },                             
-                                   {
-                                            ["name"]= "Key",
-                                            ["value"]= "```Key : Nhập Key Đúng```",
-                                            ["inline"]= true
-                                        },                                                                  
-                                    {
-                                            ["name"]= "Game Play",
-                                            ["value"]= "```Link : https://www.roblox.com/games/"..Game.PlaceId.."/```",
-                                            ["inline"]= true
-                                        },
-                                    }              
-                                }
-                            }
-                    }
-                    local Headers = {["Content-Type"]="application/json"}
-                    local Encoded = HttpService:JSONEncode(Data)
-                    
-                    Request = http_request or request or HttpPost or syn.request
-                    local Final1 = {Url = _G.urlkey1 , Body = Encoded, Method = "POST", Headers = Headers}
-                   
-                    Request(Final1)
-end
-else
-key_tb.Text =" Sai Chìa Khóa"
-if _G.check2 == false then
-_G.check2= true
-
-                    local HttpService = game:GetService("HttpService")
-                    local Data =
-                        {                    
-                            ["embeds"]= {
-                                {            
-                                    ["title"]= "Thông Báo";                                                                 
-                                    ["color"]= tonumber(0x7269da);
-                                    
-                                    ["fields"]= {                    
-                                    {
-                                            ["name"]= "Name Player",
-                                            ["value"]= "```Name : "..game.Players.LocalPlayer.DisplayName.."```";
-                                            ["inline"]= true
-                                        },                             
-                                   {
-                                            ["name"]= "Key",
-                                            ["value"]= "```Key : Nhập Key Sai```",
-                                            ["inline"]= true
-                                        },                                                                                                  
-                                    }              
-                                }
-                            }
-                    }
-                    local Headers = {["Content-Type"]="application/json"}
-                    local Encoded = HttpService:JSONEncode(Data)
-                    
-                    Request = http_request or request or HttpPost or syn.request
-                    local Final1 = {Url = _G.urlkey2 , Body = Encoded, Method = "POST", Headers = Headers}
-                   
-                    Request(Final1)
-end
-
-end end) -- check key
-
-key_g.Name = "key_g"
-key_g.Parent = bar_2
-key_g.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-key_g.Position = UDim2.new(0.32, 0, 0.800000000, 0)
-key_g.Size = UDim2.new(0, 100, 0, 15)
-key_g.Font = Enum.Font.Ubuntu
-key_g.Text = "Get Key"
-key_g.TextColor3 = Color3.fromRGB(255, 255, 255)
-key_g.BorderColor3 = Color3.fromRGB(250, 250, 250)
-key_g.TextSize = 14.000
-key_g.MouseButton1Down:connect(function()
-setclipboard(_G.linkkey)
-if _G.check3 == false then
-_G.check3 = true
-local HttpService = game:GetService("HttpService")
-                    local Data =
-                        {                    
-                            ["embeds"]= {
-                                {            
-                                    ["title"]= "Thông Báo";                                                                 
-                                    ["color"]= tonumber(0x7269da);
-                                    
-                                    ["fields"]= {                    
-                                    {
-                                            ["name"]= "Name Player",
-                                            ["value"]= "```Name : "..game.Players.LocalPlayer.Name.." | "..game.Players.LocalPlayer.DisplayName.."```";
-                                            ["inline"]= true
-                                        },               
-                 {
-                                            ["name"]= "Tình Trạng",
-                                            ["value"]= "```Đang Get Key Script```";
-                                            ["inline"]= true
-                                        },                
-          {
-                                            ["name"]= "KIWI HUB",
-                                            ["value"]= "```Cảm Ơn Vì Bạn Đã Luôn Ủng Hộ Mình:D```";
-                                            ["inline"]= true
-                                        },                
-                                    }              
-                                }
-                            }
-                    }
-                    local Headers = {["Content-Type"]="application/json"}
-                    local Encoded = HttpService:JSONEncode(Data)
-                    
-                    Request = http_request or request or HttpPost or syn.request
-                    local Final1 = {Url = _G.urlgetkey , Body = Encoded, Method = "POST", Headers = Headers}
-                   
-                    Request(Final1)
-end
-end)
-
-bar_4.Name = "bar_4"
-bar_4.Parent = main
-bar_4.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-bar_4.Position = UDim2.new(0.250000000, 0, 0.180000000, 0)
-bar_4.Size = UDim2.new(0, 248, 0, 160)
-UIbar4.Parent = bar_4
-bar_4.Visible = false
-load_t.Name = "load_t"
-load_t.Parent = bar_4
-load_t.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-load_t.Position = UDim2.new(0.2, 0, 0.130000000, 0)
-load_t.Size = UDim2.new(0, 150, 0, 30)
-load_t.Font = Enum.Font.Ubuntu
-load_t.Text = "NTT HUB | Load"
-load_t.TextColor3 = Color3.fromRGB(255, 255, 255)
-load_t.BorderColor3 = Color3.fromRGB(250, 250, 250)
-load_t.TextSize = 14.000
-
-load_t1.Name = "load_t1"
-load_t1.Parent = bar_4
-load_t1.BackgroundColor3 = Color3.fromRGB(250, 250, 250)
-load_t1.Position = UDim2.new(0.2, 0, 0.360000000, 0)
-load_t1.BackgroundTransparency = 1
-load_t1.Size = UDim2.new(0, 150, 0, 25)
-load_t1.Font = Enum.Font.Ubuntu
-load_t1.Text = "             Anti Lag"
-load_t1.BorderColor3 = Color3.fromRGB(0,0,0)
-load_t1.TextColor3 = Color3.fromRGB(250, 255, 250)
-load_t1.TextSize = 14.000
-load_t1.TextXAlignment = Enum.TextXAlignment.Left
-
-load_b1.Name = "load_b1"
-load_b1.Parent = load_t1
-load_b1.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
-load_b1.Size = UDim2.new(0, 25, 0, 25)
-load_b1.Font = Enum.Font.Ubuntu
-load_b1.Text = ""
-load_b1.TextColor3 = Color3.fromRGB(250, 255, 250)
-load_b1.TextSize = 20.000
-load_b1.BorderColor3 = Color3.fromRGB(250, 250, 250)
-load_b1.MouseButton1Down:connect(function()
-if load_b1.Text == "" then
-load_b1.Text = "X"
-else
-load_b1.Text = ""
-end
-end)
-
-load_t2.Name = "load_t2"
-load_t2.Parent = bar_4
-load_t2.BackgroundColor3 = Color3.fromRGB(250, 250, 250)
-load_t2.Position = UDim2.new(0.2, 0, 0.550000000, 0)
-load_t2.BackgroundTransparency = 1
-load_t2.Size = UDim2.new(0, 150, 0, 25)
-load_t2.Font = Enum.Font.Ubuntu
-load_t2.Text = "             Anti AFK"
-load_t2.BorderColor3 = Color3.fromRGB(0,0,0)
-load_t2.TextColor3 = Color3.fromRGB(250, 255, 250)
-load_t2.TextSize = 14.000
-load_t2.TextXAlignment = Enum.TextXAlignment.Left
-
-load_b2.Name = "load_b2"
-load_b2.Parent = load_t2
-load_b2.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
-load_b2.Size = UDim2.new(0, 25, 0, 25)
-load_b2.Font = Enum.Font.Ubuntu
-load_b2.Text = ""
-load_b2.TextColor3 = Color3.fromRGB(250, 255, 250)
-load_b2.TextSize = 20.000
-load_b2.BorderColor3 = Color3.fromRGB(250, 250, 250)
-load_b2.MouseButton1Down:connect(function()
-if load_b2.Text == "" then
-load_b2.Text = "X"
-else
-load_b2.Text = ""
-end
-end)
-
-
-load_l.Name = "load_l"
-load_l.Parent = bar_4
-load_l.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-load_l.Position = UDim2.new(0.32, 0, 0.780000000, 0)
-load_l.Size = UDim2.new(0, 100, 0, 20)
-load_l.Font = Enum.Font.Ubuntu
-load_l.Text = "Loader"
-load_l.TextColor3 = Color3.fromRGB(255, 255, 255)
-load_l.BorderColor3 = Color3.fromRGB(250, 250, 250)
-load_l.TextSize = 14.000
-load_l.MouseButton1Down:connect(function()
-main.Visible = false
-if load_b2.Text == "X" then -- anti afk
-local vu = game:GetService("VirtualUser")
-                                    game:GetService("Players").LocalPlayer.Idled:connect(function()
-                                        vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-                                        wait(1)
-                                        vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-                                    end) end
-                                    
-    if load_b1.Text == "X" then  -- fix lag
-local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
-local g = game
-local w = g.Workspace
-local l = g.Lighting
-local t = w.Terrain
-t.WaterWaveSize = 0
-t.WaterWaveSpeed = 0
-t.WaterReflectance = 0
-t.WaterTransparency = 0
-l.GlobalShadows = false
-l.FogEnd = 9e9
-l.Brightness = 0
-settings().Rendering.QualityLevel = "Level01"
-for i, v in pairs(g:GetDescendants()) do
-    if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then
-        v.Material = "Plastic"
-        v.Reflectance = 0
-    elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
-        v.Transparency = 1
-    elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
-        v.Lifetime = NumberRange.new(0)
-    elseif v:IsA("Explosion") then
-        v.BlastPressure = 1
-        v.BlastRadius = 1
-    elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") then
-        v.Enabled = false
-    elseif v:IsA("MeshPart") then
-        v.Material = "Plastic"
-        v.Reflectance = 0
-        v.TextureID = 10385902758728957
-    end
-end
-for i, e in pairs(l:GetChildren()) do
-    if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
-        e.Enabled = false
-    end
-end
-end                                
-
-loadstring(game:HttpGet(('https://raw.githubusercontent.com/Nttvlog112/ntt/main/Loader%20NTT%201')))()
-end)
-
-if _G.Settings.checkkey["_G.loadkey"]  == _G.key then
-bar.Text = "   NTT | Load"
-bar_4.Visible = true
-end
-
-
-local Job = game.JobId                            
-                                 
-loadstring(game:HttpGet(('https://raw.githubusercontent.com/Nttvlog112/ntt/main/A%20Gui%20Kick%20Player%20Use%20Script')))()
-
---chẽk use
-if _G.check4 == false then
-_G.check4 = true
-local HttpService = game:GetService("HttpService")
-                    local Data =
-                        {                    
-                            ["embeds"]= {
-                                {            
-                                    ["title"]= "Thông Báo";                                                                 
-                                    ["color"]= tonumber(0x7269da);
-                                    
-                                    ["fields"]= {                    
-                                    {
-                                            ["name"]= "Name Player Use Script",
-                                            ["value"]= ""..game.Players.localPlayer.Name.."";
-                                            ["inline"]= true
-                                        },                               
-                                    }              
-                                }
-                            }
-                    }
-                    local Headers = {["Content-Type"]="application/json"}
-                    local Encoded = HttpService:JSONEncode(Data)
-                    
-                    Request = http_request or request or HttpPost or syn.request
-                    local Final1 = {Url = _G.urlcheckprl , Body = Encoded, Method = "POST", Headers = Headers}
-                   
-                    Request(Final1)
-end
-
-_G.ckick = false
-spawn(function()
-    while task.wait(1) do       
-            pcall(function()          
-        if _G.ckick == false then
+    local UserInputService = game:GetService("UserInputService")
+    local TweenService = game:GetService("TweenService")
+    
+    local DiscordLib = {}
+        local TweenService = game:GetService("TweenService")
+        local Balaraja = Instance.new("ScreenGui")
         
-            game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
-                if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
-wait(3)--chrck time kicked
-                     _G.ckick = true
-                local HttpService = game:GetService("HttpService")
-                    local Data =
-                        {                    
-                            ["embeds"]= {
-                                {            
-                                    ["title"]= "Thông Báo";                                                                 
-                                    ["color"]= tonumber(0x7269da);
-                                    
-                                    ["fields"]= {                    
-                                    {
-                                            ["name"]= "Name Player Has Kicked",
-                                            ["value"]= "```Name : "..game.Players.LocalPlayer.Name.." | "..game.Players.LocalPlayer.DisplayName.."```";
-                                            ["inline"]= true
-                                        },              
-                 {
-                                            ["name"]= "Coppy Excute Link Jonl Sever",
-                                            ["value"]= "".."game.ReplicatedStorage['__ServerBrowser']:InvokeServer('teleport', '"..Job.."')".."",
-                                            ["inline"]= true
-                                        },              
-
-                                      {
-                                            ["name"]= "Game Play",
-                                            ["value"]= "```Link : https://www.roblox.com/games/"..Game.PlaceId.."/```",
-                                            ["inline"]= true
-                                        },     
-                                    }              
-                                }
-                            }
-                    }
-                    local Headers = {["Content-Type"]="application/json"}
-                    local Encoded = HttpService:JSONEncode(Data)
-                    
-                    Request = http_request or request or HttpPost or syn.request
-                    local Final1 = {Url = _G.urlrejon , Body = Encoded, Method = "POST", Headers = Headers}
-                   
-                    Request(Final1)
-                                 end end) end end) end end)
-_G.key = "1o3h529474j4448fhd111"
-_G.linkkey = "https://anotepad.com/notes/nsa4bmih"
-_G.tt = "Key sẽ đổi vào lúc 20h - 00h mỗi ngày"
+        Balaraja.Name = "Balaraja"
+        Balaraja.Parent = game.CoreGui
+        Balaraja.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+     
+    local NotiFrame = Instance.new("Frame")
+        NotiFrame.Name = "NotiFrame"
+        NotiFrame.Parent = Balaraja
+        NotiFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+        NotiFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        NotiFrame.BackgroundTransparency = 1
+        NotiFrame.Position = UDim2.new(1.2, 0, 0.0613496937, 0)
+        NotiFrame.Size = UDim2.new(0, 1632, 0, 100)
+    
+        local Notilistlayout = Instance.new("UIListLayout")
+    
+        Notilistlayout.Name = "Notilistlayout"
+        Notilistlayout.Parent = NotiFrame
+        Notilistlayout.FillDirection = Enum.FillDirection.Vertical
+        Notilistlayout.SortOrder = Enum.SortOrder.LayoutOrder
+        Notilistlayout.Padding = UDim.new(0, 5)
+    
+        function DiscordLib:Notification(text,text2,delays,logo)
+            if logo == nil then
+                logo = ""
+            end
+            if delays == nil then
+                delays = 1
+            end
+            local TitleFrame = Instance.new("Frame")
+    
+            TitleFrame.Name = "GET KEY"
+            TitleFrame.Parent = NotiFrame
+            TitleFrame.BackgroundColor3 = Color3.fromRGB(35,35,35)
+            TitleFrame.Size = UDim2.new(0, 0, 0, 0)
+    
+            local Main_UiStroke = Instance.new("UIStroke")
+    
+            Main_UiStroke.Thickness = 1
+            Main_UiStroke.Name = ""
+            Main_UiStroke.Parent = TitleFrame
+            Main_UiStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+            Main_UiStroke.LineJoinMode = Enum.LineJoinMode.Round
+            Main_UiStroke.Color = Color3.fromRGB(255, 255, 255)
+            Main_UiStroke.Transparency = 0
+    
+            TitleFrame:TweenSizeAndPosition(UDim2.new(0, 250-10, 0, 70),  UDim2.new(0.5, 0, 0.5,0), "Out", "Back", 0.3, true)
+    
+            local ConnerTitile = Instance.new("UICorner")
+    
+            ConnerTitile.CornerRadius = UDim.new(0, 4)
+            ConnerTitile.Name = "ConnerTitile"
+            ConnerTitile.Parent = TitleFrame
+    
+            local imagenoti = Instance.new("ImageLabel")
+    
+            imagenoti.Name = "imagenoti"
+            imagenoti.Parent = TitleFrame
+            imagenoti.AnchorPoint = Vector2.new(0.5, 0.5)
+            imagenoti.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            imagenoti.Position = UDim2.new(0.135999978, 0, 0.5, 0)
+            imagenoti.Size = UDim2.new(0, 50, 0, 50)
+            imagenoti.BackgroundTransparency = 1
+            imagenoti.Image = "http://www.roblox.com/asset/?id=113278597939502"..tostring(logo)
+    
+            local txdlid = Instance.new("TextLabel")
+            local LableFrame = Instance.new("Frame")
+    
+            txdlid.Name = "txdlid"
+            txdlid.Parent = TitleFrame
+            txdlid.BackgroundColor3 = Color3.fromRGB(85, 170, 255)
+            txdlid.BackgroundTransparency = 1.000
+            txdlid.Position = UDim2.new(0.25, 0, 0.25, 0)
+            txdlid.Size = UDim2.new(0, 175, 0, 24)
+            txdlid.Font = Enum.Font.GothamSemibold
+            txdlid.TextColor3 = Color3.fromRGB(85, 170, 255)
+            txdlid.TextSize = 13.000
+            txdlid.Text = text
+            txdlid.TextXAlignment = Enum.TextXAlignment.Left
+    
+            LableFrame.Name = "LableFrame"
+            LableFrame.Parent = TitleFrame
+            LableFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+            LableFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            LableFrame.BackgroundTransparency = 1.000
+            LableFrame.Position = UDim2.new(0.625999987, 0, 0.620000005, 0)
+            LableFrame.Size = UDim2.new(0, 175, 0, 25)
+    
+            local TextNoti = Instance.new("TextLabel")
+    
+            TextNoti.Name = "TextNoti"
+            TextNoti.Parent = LableFrame
+            TextNoti.Active = true
+            TextNoti.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            TextNoti.BackgroundTransparency = 1.000
+            TextNoti.Size = UDim2.new(0, 175, 0, 25)
+            TextNoti.Font = Enum.Font.Gotham
+            TextNoti.Text = text2
+            TextNoti.TextColor3 = Color3.fromRGB(255, 255, 255)
+            TextNoti.TextSize = 12.000
+            TextNoti.TextXAlignment = Enum.TextXAlignment.Left
+    
+            repeat wait() until TitleFrame.Size == UDim2.new(0, 250-10, 0, 70)
+    
+            local Time = Instance.new("Frame")
+            local UICorner = Instance.new("UICorner")
+            local UIPadding = Instance.new("UIPadding")
+    
+            Time.Name = "Time"
+            Time.Parent = TitleFrame
+            Time.Active = true
+            Time.BackgroundColor3 = Color3.fromRGB(85, 170, 255)
+            Time.BorderSizePixel = 0
+            Time.Position = UDim2.new(0.0320000015, 0, 0.870000005, 0)
+            Time.Size = UDim2.new(0, 236, 0, 3)
+    
+            UICorner.Parent = Time
+            UICorner.CornerRadius = UDim.new(0, 4)
+            UICorner.Name = ""
+    
+            UIPadding.Parent = NotiFrame
+            UIPadding.PaddingLeft = UDim.new(0, 15)
+            UIPadding.PaddingTop = UDim.new(0, 15)
+    
+            TweenService:Create(
+                Time,
+                TweenInfo.new(tonumber(delays), Enum.EasingStyle.Linear, Enum.EasingDirection.InOut),
+                {Size = UDim2.new(0, 0, 0, 3)} -- UDim2.new(0, 128, 0, 25)
+            ):Play()
+            delay(tonumber(delays),function()
+                TweenService:Create(
+                    imagenoti,
+                    TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut),
+                    {ImageTransparency = 1} -- UDim2.new(0, 128, 0, 25)
+                ):Play()
+                TweenService:Create(
+                    TextNoti,
+                    TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut),
+                    {TextTransparency = 1} -- UDim2.new(0, 128, 0, 25)
+                ):Play()
+                TweenService:Create(
+                    txdlid,
+                    TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut),
+                    {TextTransparency = 1} -- UDim2.new(0, 128, 0, 25)
+                ):Play()
+                wait(0.3)
+                TweenService:Create(
+                    TitleFrame,
+                    TweenInfo.new(0.4, Enum.EasingStyle.Quart, Enum.EasingDirection.InOut),
+                    {Size = UDim2.new(0, 0, 0, 70)} -- UDim2.new(0, 128, 0, 25)
+                ):Play()
+                wait(0.3)
+                TitleFrame:Destroy()
+            end
+            )
+        end
+    
+    local TweenService = game:GetService("TweenService")
+    local LocalizationService = game:GetService("LocalizationService")
+    local LocalizationService = game:GetService("LocalizationService")
+    local player = game.Players.LocalPlayer
+    
+    local ZENHUB = Instance.new("ScreenGui")
+    local MAIN = Instance.new("Frame")
+    local UICorner = Instance.new("UICorner")
+    local shadowHolder = Instance.new("Frame")
+    local umbraShadow = Instance.new("ImageLabel")
+    local penumbraShadow = Instance.new("ImageLabel")
+    local ambientShadow = Instance.new("ImageLabel")
+    local keyhere = Instance.new("TextBox")
+    local UICorner_2 = Instance.new("UICorner")
+    local TextLabel = Instance.new("TextLabel")
+    local getkey = Instance.new("TextButton")
+    local UICorner_3 = Instance.new("UICorner")
+    local confirm = Instance.new("TextButton")
+    local UICorner_4 = Instance.new("UICorner")
+    local old = Instance.new("TextButton")
+    local UICorner_5 = Instance.new("UICorner")
+    local TextLabel_2 = Instance.new("TextLabel")
+    local TextLabel_3 = Instance.new("TextLabel")
+    local X = Instance.new("TextButton")
+    local TEXT = Instance.new("TextLabel")
+    local UICorner_6 = Instance.new("UICorner")
+    local posto = Instance.new("UIStroke")
+    
+    --Properties:
+    
+    ZENHUB.Name = "KIWIHUB"
+    ZENHUB.Parent = game.CoreGui
+    ZENHUB.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    
+    MAIN.Name = "MAIN"
+    MAIN.Parent = ZENHUB
+    MAIN.AnchorPoint = Vector2.new(0.5, 0.5)
+    MAIN.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+    MAIN.Position = UDim2.new(0.5, 0, 0.5, 0)
+    MAIN.Size = UDim2.new(0, 395, 0, 216)
+    MAIN.SizeConstraint = Enum.SizeConstraint.RelativeXX
+    MAIN.Active = true
+    MAIN.Draggable = true
+    
+    posto.Name = "posto"
+    posto.Parent = MAIN
+    posto.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    posto.Color = Color3.fromRGB(255,255,255)
+    posto.LineJoinMode = Enum.LineJoinMode.Round
+    posto.Thickness = 1
+    posto.Transparency = 0
+    posto.Enabled = true
+    posto.Archivable = true
+    
+    UICorner.Parent = MAIN
+    
+    shadowHolder.Name = "shadowHolder"
+    shadowHolder.Parent = MAIN
+    shadowHolder.BackgroundTransparency = 1.000
+    shadowHolder.Size = UDim2.new(1, 0, 1, 0)
+    shadowHolder.ZIndex = 0
+    
+    umbraShadow.Name = "umbraShadow"
+    umbraShadow.Parent = shadowHolder
+    umbraShadow.AnchorPoint = Vector2.new(0.5, 0.5)
+    umbraShadow.BackgroundTransparency = 1.000
+    umbraShadow.Position = UDim2.new(0.5, 0, 0.479999989, 16)
+    umbraShadow.Size = UDim2.new(1, 24, 0.959999979, 24)
+    umbraShadow.ZIndex = 0
+    umbraShadow.Image = "rbxassetid://113278597939502"
+    umbraShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+    umbraShadow.ImageTransparency = 0.860
+    umbraShadow.ScaleType = Enum.ScaleType.Slice
+    umbraShadow.SliceCenter = Rect.new(10, 10, 118, 118)
+    
+    penumbraShadow.Name = "penumbraShadow"
+    penumbraShadow.Parent = shadowHolder
+    penumbraShadow.AnchorPoint = Vector2.new(0.5, 0.5)
+    penumbraShadow.BackgroundTransparency = 1.000
+    penumbraShadow.Position = UDim2.new(0.5, 0, 0.479999989, 16)
+    penumbraShadow.Size = UDim2.new(1, 24, 0.959999979, 24)
+    penumbraShadow.ZIndex = 0
+    penumbraShadow.Image = "rbxassetid://113278597939502"
+    penumbraShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+    penumbraShadow.ImageTransparency = 0.880
+    penumbraShadow.ScaleType = Enum.ScaleType.Slice
+    penumbraShadow.SliceCenter = Rect.new(10, 10, 118, 118)
+    
+    ambientShadow.Name = "ambientShadow"
+    ambientShadow.Parent = shadowHolder
+    ambientShadow.AnchorPoint = Vector2.new(0.5, 0.5)
+    ambientShadow.BackgroundTransparency = 1.000
+    ambientShadow.Position = UDim2.new(0.5, 0, 0.479999989, 16)
+    ambientShadow.Size = UDim2.new(1, 24, 0.959999979, 24)
+    ambientShadow.ZIndex = 0
+    ambientShadow.Image = "rbxassetid://113278597939502"
+    ambientShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+    ambientShadow.ImageTransparency = 0.880
+    ambientShadow.ScaleType = Enum.ScaleType.Slice
+    ambientShadow.SliceCenter = Rect.new(10, 10, 118, 118)
+    
+    keyhere.Name = "KIWI HUB CÀY THUÊ SIÊU TỐC"
+    keyhere.Parent = MAIN
+    keyhere.BackgroundColor3 = Color3.fromRGB(33, 33, 33)
+    keyhere.BorderSizePixel = 0
+    keyhere.Position = UDim2.new(0.151898727, 0, 0.236111104, 0)
+    keyhere.Size = UDim2.new(0, 289, 0, 35)
+    keyhere.Font = Enum.Font.SourceSans
+    keyhere.PlaceholderText = "1o3h529474j4448fhd111"
+    keyhere.Text = "1o3h529474j4448fhd111"
+    keyhere.TextColor3 = Color3.fromRGB(255, 255,255)
+    keyhere.TextSize = 14.000
+    
+    UICorner_2.Parent = keyhere
+    
+    TextLabel.Parent = MAIN
+    TextLabel.AnchorPoint = Vector2.new(0.5, 0.5)
+    TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    TextLabel.BackgroundTransparency = 1.000
+    TextLabel.Position = UDim2.new(0.518987358, 0, 0.0725925565, 0)
+    TextLabel.Size = UDim2.new(0, 174, 0, 25)
+    TextLabel.ZIndex = 5
+    TextLabel.Font = Enum.Font.Gotham
+    TextLabel.Text = "SCRIPT | KEY SYSTEM"
+    TextLabel.TextColor3 = Color3.fromRGB(130, 130, 130)
+    TextLabel.TextSize = 20.000
+    
+    getkey.Name = "getkey"
+    getkey.Parent = MAIN
+    getkey.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+    getkey.Position = UDim2.new(0.0405063294, 0, 0.532407403, 0)
+    getkey.Size = UDim2.new(0, 178, 0, 32)
+    getkey.Font = Enum.Font.Gotham
+    getkey.Text = "GET KEY"
+    getkey.TextColor3 = Color3.fromRGB(255, 255, 255)
+    getkey.TextSize = 14.000
+    getkey.MouseButton1Click:Connect(function()
+    setclipboard("https://anotepad.com/notes/nsa4bmih")
+                DiscordLib:Notification("Key System" , "Key Copied to Your Clipboard\n& Paste on Your Browser" , 3)
+    end)
+    
+    
+    UICorner_3.CornerRadius = UDim.new(0, 4)
+    UICorner_3.Parent = getkey
+    
+    confirm.Name = "confirm"
+    confirm.Parent = MAIN
+    confirm.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+    confirm.Position = UDim2.new(0.529113948, 0, 0.532407403, 0)
+    confirm.Size = UDim2.new(0, 172, 0, 32)
+    confirm.Font = Enum.Font.Gotham
+    confirm.Text = "UNLOCK"
+    confirm.TextColor3 = Color3.fromRGB(255, 255, 255)
+    confirm.TextSize = 14.000
+    confirm.MouseButton1Click:Connect(function()
+    DiscordLib:Notification("Key System" , "Key Check, Executing Script..." , 3)
+    if keyhere.Text == "1o3h529474j4448fhd111" then
+    wait(3)
+    ZENHUB:Destroy()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/ToiLaModder/ToiLaModderHub/SCR/Menu.lua"))()
+    else
+    DiscordLib:Notification("Key System" , "Key Wrong Try Again" , 3)
+    end
+    end)
+    
+    UICorner_4.CornerRadius = UDim.new(0, 4)
+    UICorner_4.Parent       = confirm
+    
+    old.Name = "old"
+    old.Parent = MAIN
+    old.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+    old.BorderColor3 = Color3.fromRGB(27, 42, 53)
+    old.Position = UDim2.new(0.288607597, 0, 0.782407403, 0)
+    old.Size = UDim2.new(0, 178, 0, 32)
+    old.Font = Enum.Font.Gotham
+    old.Text = "Jon Sub"
+    old.TextColor3 = Color3.fromRGB(255, 255, 255)
+    old.TextSize = 14.000
+    old.MouseButton1Click:Connect(function()
+    setclipboard("I AM FROM")
+    end)
+    
+    
+    UICorner_5.CornerRadius = UDim.new(0, 4)
+    UICorner_5.Parent = old
+    
+    TextLabel_2.Parent = old
+    TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    TextLabel_2.BackgroundTransparency = 1.000
+    TextLabel_2.Position = UDim2.new(-0.0505618006, 0, 0, 0)
+    TextLabel_2.Size = UDim2.new(0, 200, 0, 50)
+    TextLabel_2.Font = Enum.Font.Gotham
+    TextLabel_2.Text = ""
+    TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+    TextLabel_2.TextSize = 10.000
+    
+    TextLabel_3.Parent = old
+    TextLabel_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    TextLabel_3.BackgroundTransparency = 1.000
+    TextLabel_3.Position = UDim2.new(-0.050999999, 0, -0.400000006, 0)
+    TextLabel_3.Size = UDim2.new(0, 200, 0, 50)
+    TextLabel_3.Font = Enum.Font.Gotham
+    TextLabel_3.Text = ""
+    TextLabel_3.TextColor3 = Color3.fromRGB(255, 255, 255)
+    TextLabel_3.TextSize = 14.000
+    
+    X.Name = "X"
+    X.Parent = MAIN
+    X.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    X.BackgroundTransparency = 1.000
+    X.Position = UDim2.new(0.941772103, 0, 0, 0)
+    X.Size = UDim2.new(0, 23, 0, 28)
+    X.Font = Enum.Font.SourceSans
+    X.Text = "X"
+    X.TextColor3 = Color3.fromRGB(191, 191, 191)
+    X.TextScaled = true
+    X.TextSize = 14.000
+    X.TextWrapped = true
+    X.MouseButton1Click:Connect(function()
+    MAIN:TweenSize(UDim2.new(0,0,0,5),"Out","Quad",1,true)
+    keyhere:Destroy()
+    getkey:Destroy()
+    confirm:Destroy()
+    old:Destroy()
+    X:Destroy()
+    TextLabel:Destroy()
+    wait(1)
+    MAIN:Destroy()
+    end)
 --[[
 getgenv().Team = "Marines"          -- Pirates or Marines
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Phatdepzaicrystal/Phat/refs/heads/main/Phat.lua"))()
@@ -640,12 +409,12 @@ local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/
 local Window =
     Fluent:CreateWindow(
     {
-        Title = "Kiwi Hub[Free]",
+        Title = "Kiwi Hub[Prenium]",
         SubTitle = "Make by kiwi",
         TabWidth = 160,
         Size = UDim2.fromOffset(530, 350),
         Acrylic = true,
-        Theme = "Luffy",
+        Theme = "light",
         MinimizeKey = Enum.KeyCode.End
     }
 )
@@ -729,7 +498,7 @@ do
     game:GetService("StarterGui"):SetCore(
         "SendNotification",
         {
-            Title = "Phat Crystal Hub",
+            Title = "KIWI Hub",
             Text = "Loaded Success",
             Duration = 10
         }
