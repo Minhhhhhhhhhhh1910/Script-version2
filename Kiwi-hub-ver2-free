@@ -1,3 +1,4 @@
+--[[
 do
     local Babix = game.CoreGui:FindFirstChild("ThunderScreen");if Babix then Babix:Destroy();end
     end
@@ -273,7 +274,7 @@ do
     keyhere.Position = UDim2.new(0.151898727, 0, 0.236111104, 0)
     keyhere.Size = UDim2.new(0, 289, 0, 35)
     keyhere.Font = Enum.Font.SourceSans
-    keyhere.PlaceholderText = "1o3h529474j4448fhd111"
+    keyhere.PlaceholderText = "KEY HERE..."
     keyhere.Text = "1o3h529474j4448fhd111"
     keyhere.TextColor3 = Color3.fromRGB(255, 255,255)
     keyhere.TextSize = 14.000
@@ -394,7 +395,6 @@ do
     wait(1)
     MAIN:Destroy()
     end)
---[[
 getgenv().Team = "Marines"          -- Pirates or Marines
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Phatdepzaicrystal/Phat/refs/heads/main/Phat.lua"))()
 ]] --
