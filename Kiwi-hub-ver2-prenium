@@ -1,17 +1,3 @@
-        Key = {
-        KeySystem = true,
-        Title = "Get Key",
-        Description = "",
-        KeyLink = "https://anotepad.com/notes/nsa4bmih",
-        Keys = {"1o3h529474j4448fhd111"},
-        Notifi = {
-        Notifications = true,
-        CorrectKey = "Running the Script...",
-       Incorrectkey = "The key is incorrect",
-       CopyKeyLink = "Copied to Clipboard"
-      }
-    }
-  })
 --[[
 getgenv().Team = "Marines"          -- Pirates or Marines
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Phatdepzaicrystal/Phat/refs/heads/main/Phat.lua"))()
@@ -27,11 +13,11 @@ local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/
 local Window =
     Fluent:CreateWindow(
     {
-        Title = "Kiwi Hub[Free]",
+        Title = "Kiwi Hub[Prenium]",
         SubTitle = "Make by kiwi",
-        TabWidth = 160,
+        TabWidth = 200,
         Size = UDim2.fromOffset(530, 350),
-        Acrylic = true,
+        Acrylic = false,
         Theme = "Luffy",
         MinimizeKey = Enum.KeyCode.End
     }
@@ -116,7 +102,7 @@ do
     game:GetService("StarterGui"):SetCore(
         "SendNotification",
         {
-            Title = "Phat Crystal Hub",
+            Title = "KIWI Hub",
             Text = "Loaded Success",
             Duration = 10
         }
