@@ -1,4 +1,3 @@
---[[
 do
     local Babix = game.CoreGui:FindFirstChild("ThunderScreen");if Babix then Babix:Destroy();end
     end
@@ -394,7 +393,11 @@ do
     TextLabel:Destroy()
     wait(1)
     MAIN:Destroy()
-    end)
+       
+       
+      }
+    }
+  })
 getgenv().Team = "Marines"          -- Pirates or Marines
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Phatdepzaicrystal/Phat/refs/heads/main/Phat.lua"))()
 ]] --
@@ -411,10 +414,10 @@ local Window =
     {
         Title = "Kiwi Hub[Prenium]",
         SubTitle = "Make by kiwi",
-        TabWidth = 160,
+        TabWidth = 200,
         Size = UDim2.fromOffset(530, 350),
-        Acrylic = true,
-        Theme = "light",
+        Acrylic = false,
+        Theme = "Luffy",
         MinimizeKey = Enum.KeyCode.End
     }
 )
