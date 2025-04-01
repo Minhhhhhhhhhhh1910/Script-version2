@@ -18,7 +18,7 @@ local Window =
         TabWidth = 200,
         Size = UDim2.fromOffset(530, 350),
         Acrylic = false,
-        Theme = "Luffy",
+        Theme = "Aqual",
         MinimizeKey = Enum.KeyCode.End
     }
 )
