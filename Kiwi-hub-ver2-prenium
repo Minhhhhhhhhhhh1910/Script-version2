@@ -1,33 +1,79 @@
 local HttpService = game:GetService("HttpService")
+local url = "https://gist.githubusercontent.com/Minhhhhhhhhhhh1910/26b44111b10066d1cb6024e7123f8a4e/raw/a866c24716d6a01858726337665ead977f2d295b/gistfile1.txt"
 
-local api_key = "1o3h529474j4448fhd111"
-
-local function validate_api_key()
-    local url = "https://anotepad.com/notes/nsa4bmih"
-    local data = {
-        api_key = api_key
-    }
-
-    local jsonData = HttpService:JSONEncode(data)
-
-    local response
-    local success, errorMessage = pcall(function()
-        response = HttpService:PostAsync(url, jsonData, Enum.HttpContentType.ApplicationJson)
+local function checkAPIKey(userKey)
+    local success, response = pcall(function()
+        return HttpService:GetAsync(url)
     end)
 
-    if success then
-        local responseData = HttpService:JSONDecode(response)
-        if responseData.message == "API key is valid" then
-            print("API Key is valid!")
-        else
-            print("Invalid API Key")
-        end
+    if success and userKey == response then
+        print("Key hợp lệ!Chúc bạn dùng script vui vẻ")
+        return true
     else
-        print("Error while checking API key: " .. errorMessage)
+        print("Key không hợp lệ!Vui lòng thử lại")
+        game:Shutdown()
+        return false
     end
 end
-validate_api_key()q
---[[
+
+local userInputKey = "102j103i4hbdjh9e8euu8292djrh293837" -- Key nhập từ người dùng
+checkAPIKey(userInputKey)
+local HttpService = game:GetService("HttpService")
+local key_url = "https://gist.githubusercontent.com/Minhhhhhhhhhhh1910/26b44111b10066d1cb6024e7123f8a4e/raw/a866c24716d6a01858726337665ead977f2d295b/gistfile1.txt"
+
+local function checkKey(inputKey)
+    local success, response = pcall(function()
+        return HttpService:GetAsync(key_url)
+    end)
+
+    if success and inputKey == response then
+        print("Key hợp lệ! Đang tải script...")
+        return true
+    else
+        print("Key không hợp lệ! Đóng game...")
+        game:Shutdown()
+        return false
+    end
+end
+
+-- Giao diện nhập key
+local player = game.Players.LocalPlayer
+local ScreenGui = Instance.new("ScreenGui", game.CoreGui)
+local Frame = Instance.new("Frame", ScreenGui)
+Frame.Size = UDim2.new(0, 300, 0, 150)
+Frame.Position = UDim2.new(0.5, -150, 0.5, -75)
+Frame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+
+local TextBox = Instance.new("TextBox", Frame)
+TextBox.Size = UDim2.new(1, 0, 0.5, 0)
+TextBox.Text = "Nhập Key..."
+
+local ConfirmButton = Instance.new("TextButton", Frame)
+ConfirmButton.Size = UDim2.new(1, 0, 0.5, 0)
+ConfirmButton.Position = UDim2.new(0, 0, 0.5, 0)
+ConfirmButton.Text = "Xác Nhận"
+
+ConfirmButton.MouseButton1Click:Connect(function()
+    local userInputKey = TextBox.Text
+    if checkKey(userInputKey) then
+        ScreenGui:Destroy()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Minhhhhhhhhhhh1910/Script-version2/refs/heads/main/Kiwi-hub-ver2-prenium"))() -- Load script chính
+    end
+end)
+local function encodeKey(key)
+    return game:GetService("HttpService"):JSONEncode({key = key})
+end
+
+local function decodeKey(encodedKey)
+    return game:GetService("HttpService"):JSONDecode(encodedKey).key
+end
+
+local myKey = "102j103i4hbdjh9e8euu8292djrh293837"
+local encoded = encodeKey(myKey)
+print("Encoded Key: " .. encoded)
+
+local decoded = decodeKey(encoded)
+print("Decoded Key: " .. decoded)
 getgenv().Team = "Marines"          -- Pirates or Marines
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Phatdepzaicrystal/Phat/refs/heads/main/Phat.lua"))()
 ]] --
@@ -42,11 +88,11 @@ local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/
 local Window =
     Fluent:CreateWindow(
     {
-        Title = "Kiwi Hub[Free]",
+        Title = "Kiwi Hub[Prenium]",
         SubTitle = "Make by Kiwi",
         TabWidth = 160,
         Size = UDim2.fromOffset(530, 350),
-        Acrylic = false,
+        Acrylic = true,
         Theme = "Aqual",
         MinimizeKey = Enum.KeyCode.End
     }
