@@ -17,8 +17,8 @@ local Window =
         SubTitle = "Make by kiwi",
         TabWidth = 200,
         Size = UDim2.fromOffset(530, 350),
-        Acrylic = false,
-        Theme = "Darkviolet",
+        Acrylic = True,
+        Theme = "Aqual",
         MinimizeKey = Enum.KeyCode.End
     }
 )
