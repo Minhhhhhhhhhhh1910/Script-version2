@@ -1,3 +1,32 @@
+local HttpService = game:GetService("HttpService")
+
+local api_key = "1o3h529474j4448fhd111"
+
+local function validate_api_key()
+    local url = "https://anotepad.com/notes/nsa4bmih"
+    local data = {
+        api_key = api_key
+    }
+
+    local jsonData = HttpService:JSONEncode(data)
+
+    local response
+    local success, errorMessage = pcall(function()
+        response = HttpService:PostAsync(url, jsonData, Enum.HttpContentType.ApplicationJson)
+    end)
+
+    if success then
+        local responseData = HttpService:JSONDecode(response)
+        if responseData.message == "API key is valid" then
+            print("API Key is valid!")
+        else
+            print("Invalid API Key")
+        end
+    else
+        print("Error while checking API key: " .. errorMessage)
+    end
+end
+validate_api_key()q
 --[[
 getgenv().Team = "Marines"          -- Pirates or Marines
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Phatdepzaicrystal/Phat/refs/heads/main/Phat.lua"))()
@@ -13,31 +42,31 @@ local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/
 local Window =
     Fluent:CreateWindow(
     {
-        Title = "Kiwi Hub[Prenium]",
-        SubTitle = "Make by kiwi",
-        TabWidth = 200,
+        Title = "Kiwi Hub[Free]",
+        SubTitle = "Make by Kiwi",
+        TabWidth = 160,
         Size = UDim2.fromOffset(530, 350),
-        Acrylic = True,
+        Acrylic = false,
         Theme = "Aqual",
         MinimizeKey = Enum.KeyCode.End
     }
 )
 
 local Tabs = {
-    Sever = Window:AddTab({Title = "chỉ số và máy chủ|Status And Server", Icon = "loader"}),
-    Main = Window:AddTab({Title = "trang chủ|Main", Icon = "home"}),
-    Setting = Window:AddTab({Title = "cài đặt|Settings", Icon = "sliders"}),
+    Sever = Window:AddTab({Title = "Status And Server", Icon = "loader"}),
+    Main = Window:AddTab({Title = "Main", Icon = "home"}),
+    Setting = Window:AddTab({Title = "Settings", Icon = "sliders"}),
     Player = Window:AddTab({Title = "PvP", Icon = "shield"}),
-    Item = Window:AddTab({Title = "lấy vật phẩm|Get Item", Icon = "sword"}),
-    Fish = Window:AddTab({Title = "sự kiện biển|Sea Event", Icon = "anchor"}),
-    Volcanic = Window:AddTab({Title = "sự kiện núi lửa|Volcano Event", Icon = "tent"}),	
-    S =	Window:AddTab({Title = "cài đặt sự kiện biển|Setting For Sea Event", Icon = "layers"}),	
-    Teleport = Window:AddTab({Title = "dịch chuyển|Teleport", Icon = "map"}),
-    Fruit = Window:AddTab({Title = "trái|Fruit", Icon = "apple"}),
-    Raid = Window:AddTab({Title = "tập kích|Raid", Icon = "target"}),
+    Item = Window:AddTab({Title = "Get Item", Icon = "sword"}),
+    Fish = Window:AddTab({Title = "Sea Event", Icon = "anchor"}),
+    Volcanic = Window:AddTab({Title = "Volcano Event", Icon = "tent"}),	
+    S =	Window:AddTab({Title = "Setting For Sea Event", Icon = "layers"}),	
+    Teleport = Window:AddTab({Title = "Teleport", Icon = "map"}),
+    Fruit = Window:AddTab({Title = "Fruit", Icon = "apple"}),
+    Raid = Window:AddTab({Title = "Raid", Icon = "target"}),
     Race = Window:AddTab({Title = "Race", Icon = "flag"}),
-    Shop = Window:AddTab({Title = "cửa hàng|Shop", Icon = "shopping-bag"}),
-    Misc = Window:AddTab({Title = "khác|Misc", Icon = "menu"})
+    Shop = Window:AddTab({Title = "Shop", Icon = "shopping-bag"}),
+    Misc = Window:AddTab({Title = "Misc", Icon = "menu"})
 }
 local Options = Fluent.Options
 do
@@ -73,7 +102,7 @@ do
     b.Position = UDim2.new(0.103761353, 0, 0.214939028, 0)
     b.Size = UDim2.new(0, 50, 0, 50)
     b.Draggable = true
-    b.Image = "rbxassetid://113278597939502"
+    b.Image = "rbxassetid://106595114856025"
     c.Parent = b
     local function d()
         local e = Instance.new("LocalScript", b)
@@ -102,7 +131,7 @@ do
     game:GetService("StarterGui"):SetCore(
         "SendNotification",
         {
-            Title = "KIWI Hub",
+            Title = "Phat Crystal Hub",
             Text = "Loaded Success",
             Duration = 10
         }
