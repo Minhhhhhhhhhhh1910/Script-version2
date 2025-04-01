@@ -74,6 +74,7 @@ print("Encoded Key: " .. encoded)
 
 local decoded = decodeKey(encoded)
 print("Decoded Key: " .. decoded)
+--]]
 getgenv().Team = "Marines"          -- Pirates or Marines
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Phatdepzaicrystal/Phat/refs/heads/main/Phat.lua"))()
 ]] --
