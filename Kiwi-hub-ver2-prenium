@@ -1,3 +1,4 @@
+--[[
 getgenv().Team = "Marines"          -- Pirates or Marines
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Phatdepzaicrystal/Phat/refs/heads/main/Phat.lua"))()
 ]] --
@@ -12,29 +13,29 @@ local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/
 local Window =
     Fluent:CreateWindow(
     {
-        Title = "Kiwi Hub[Prenium]",
+        Title = "Kiwi Hub[Version 2.0]",
         SubTitle = "Make by Kiwi",
-        TabWidth = 160,
+        TabWidth = 170,
         Size = UDim2.fromOffset(530, 350),
-        Acrylic = true,
-        Theme = "Aqual",
+        Acrylic = false,
+        Theme = "Light",
         MinimizeKey = Enum.KeyCode.End
     }
 )
 
 local Tabs = {
-    Sever = Window:AddTab({Title = "Status And Server", Icon = "loader"}),
+    Sever = Window:AddTab({Title = "Trạng thái và máy chủ|Status And Server", Icon = "loader"}),
     Main = Window:AddTab({Title = "Trang chủ|Main", Icon = "home"}),
     Setting = Window:AddTab({Title = "Cài đặt|Settings", Icon = "sliders"}),
     Player = Window:AddTab({Title = "PvP", Icon = "shield"}),
     Item = Window:AddTab({Title = "Lấy vật phẩm|Get Item", Icon = "sword"}),
     Fish = Window:AddTab({Title = "Sự kiện biển|Sea Event", Icon = "anchor"}),
-    Volcanic = Window:AddTab({Title = "Volcano Event", Icon = "tent"}),	
+    Volcanic = Window:AddTab({Title = "Sự kiện núi lửa|Volcano Event", Icon = "tent"}),	
     S =	Window:AddTab({Title = "Cài đặt sự kiện biển|Setting For Sea Event", Icon = "layers"}),	
     Teleport = Window:AddTab({Title = "Dịch chuyển|Teleport", Icon = "map"}),
     Fruit = Window:AddTab({Title = "Trái|Fruit", Icon = "apple"}),
     Raid = Window:AddTab({Title = "Tập kích|Raid", Icon = "target"}),
-    Race = Window:AddTab({Title = "Race", Icon = "flag"}),
+    Race = Window:AddTab({Title = "Tộc|Race", Icon = "flag"}),
     Shop = Window:AddTab({Title = "Cửa hàng|Shop", Icon = "shopping-bag"}),
     Misc = Window:AddTab({Title = "Khác|Misc", Icon = "menu"})
 }
@@ -69,8 +70,8 @@ do
     b.BackgroundColor3 = Color3.fromRGB(0, 0, 255)
     b.BorderColor3 = Color3.fromRGB(0, 0, 0)
     b.BorderSizePixel = 0
-    b.Position = UDim2.new(0, 400, 0, 0, 300)
-    b.Size = UDim2.new(0, 50, 0, 50)
+    b.Position = UDim2.new(0.103761353, 0, 0.214939028, 0)
+    b.Size = UDim2.new(0, 400, 0, 300)
     b.Draggable = true
     b.Image = "rbxassetid://100427789611089"
     c.Parent = b
@@ -101,9 +102,9 @@ do
     game:GetService("StarterGui"):SetCore(
         "SendNotification",
         {
-            Title = "Phat Crystal Hub",
+            Title = "Kiwi Hub [Version 2.0",
             Text = "Loaded Success",
-            Duration = 10
+            Duration = 20
         }
     )
 
@@ -4281,10 +4282,10 @@ do
 
     Tabs.Sever:AddButton(
         {
-            Title = "Sever Discord PhatCrystal",
+            Title = "Sever Discord Kiwi",
             Description = "Click to copy the Discord link",
             Callback = function()
-                setclipboard("https://discord.gg/hyGgHBudcs")
+                setclipboard("https://discord.gg/uNvZEcaUhh")
                 print("Discord link copied!")
             end
         }
