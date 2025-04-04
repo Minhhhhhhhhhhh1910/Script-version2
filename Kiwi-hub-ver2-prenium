@@ -18,7 +18,7 @@ local Window =
         TabWidth = 170,
         Size = UDim2.fromOffset(530, 350),
         Acrylic = false,
-        Theme = "Rose",
+        Theme = "Darkviolet",
         MinimizeKey = Enum.KeyCode.End
     }
 )
@@ -67,7 +67,7 @@ do
     a.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
     a.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     b.Parent = a
-    b.BackgroundColor3 = Color3.fromRGB(255, 255, 0)
+    b.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     b.BorderColor3 = Color3.fromRGB(0, 0, 0)
     b.BorderSizePixel = 0
     b.Position = UDim2.new(0.103761353, 0, 0.214939028, 0)
@@ -102,9 +102,9 @@ do
     game:GetService("StarterGui"):SetCore(
         "SendNotification",
         {
-            Title = "Kiwi Hub [Version 2.0",
+            Title = "Kiwi Hub [Prenium]",
             Text = "Loaded Success",
-            Duration = 10
+            Duration = 5
         }
     )
 
