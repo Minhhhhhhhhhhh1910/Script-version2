@@ -18,7 +18,7 @@ local Window =
         TabWidth = 170,
         Size = UDim2.fromOffset(530, 350),
         Acrylic = false,
-        Theme = "Aqual",
+        Theme = "Rose",
         MinimizeKey = Enum.KeyCode.End
     }
 )
@@ -67,13 +67,13 @@ do
     a.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
     a.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     b.Parent = a
-    b.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    b.BackgroundColor3 = Color3.fromRGB(255, 255, 0)
     b.BorderColor3 = Color3.fromRGB(0, 0, 0)
     b.BorderSizePixel = 0
     b.Position = UDim2.new(0.103761353, 0, 0.214939028, 0)
     b.Size = UDim2.new(0, 50, 0, 50)
     b.Draggable = true
-    b.Image = "rbxassetid://126762761417293"
+    b.Image = "rbxassetid://26762761417293"
     c.Parent = b
     local function d()
         local e = Instance.new("LocalScript", b)
@@ -2855,7 +2855,7 @@ do
                                         BillboardGui.StudsOffset = Vector3.new(0, 2.5, 0)
 
                                         TextLabel.Parent = BillboardGui
-                                        TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                                        TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 0)
                                         TextLabel.BackgroundTransparency = 1.000
                                         TextLabel.Size = UDim2.new(0, 200, 0, 50)
                                         TextLabel.Font = Enum.Font.GothamBold
@@ -2905,7 +2905,7 @@ do
                                         BillboardGui.StudsOffset = Vector3.new(0, 2.5, 0)
 
                                         TextLabel.Parent = BillboardGui
-                                        TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                                        TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 0)
                                         TextLabel.BackgroundTransparency = 1.000
                                         TextLabel.Size = UDim2.new(0, 200, 0, 50)
                                         TextLabel.Font = Enum.Font.GothamBold
@@ -2955,7 +2955,7 @@ do
                                         BillboardGui.StudsOffset = Vector3.new(0, 2.5, 0)
 
                                         TextLabel.Parent = BillboardGui
-                                        TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                                        TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 0)
                                         TextLabel.BackgroundTransparency = 1.000
                                         TextLabel.Size = UDim2.new(0, 200, 0, 50)
                                         TextLabel.Font = Enum.Font.GothamBold
@@ -14784,3 +14784,154 @@ spawn(function()
         end
     end
 end);
+
+
+
+-- Hiệu ứng mở GUI
+local TweenService = game:GetService("TweenService")
+local gui = script.Parent
+local frame = gui:WaitForChild("MainFrame") -- đổi tên nếu cần
+
+frame.Visible = false
+frame.Size = UDim2.new(0, 0, 0, 0)
+
+task.wait(0.2) -- delay nhỏ
+frame.Visible = true
+
+TweenService:Create(
+    frame,
+    TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+    {Size = UDim2.new(0.5, 0, 0.5, 0)} -- kích thước mong muốn
+):Play()
+
+
+
+-- Hiệu ứng khi nhấn vào nút
+local TweenService = game:GetService("TweenService")
+
+local function applyButtonEffects(button)
+    button.MouseButton1Down:Connect(function()
+        -- Hiệu ứng co lại
+        local shrink = TweenService:Create(
+            button,
+            TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+            {Size = UDim2.new(button.Size.X.Scale * 0.9, 0, button.Size.Y.Scale * 0.9, 0)}
+        )
+        shrink:Play()
+        
+        -- Đổi màu khi nhấn
+        local originalColor = button.BackgroundColor3
+        button.BackgroundColor3 = Color3.fromRGB(255, 215, 0) -- Màu vàng sáng hơn
+        
+        -- Rung nhẹ (Shake)
+        local shakeTween = TweenService:Create(
+            button,
+            TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out, 4, true),
+            {Position = button.Position + UDim2.new(0, 2, 0, 0)}
+        )
+        shakeTween:Play()
+
+        task.wait(0.1)
+        
+        -- Phát sáng
+        button.BackgroundTransparency = 0.3
+        
+        -- Hiệu ứng trở lại bình thường
+        local grow = TweenService:Create(
+            button,
+            TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+            {Size = UDim2.new(button.Size.X.Scale / 0.9, 0, button.Size.Y.Scale / 0.9, 0)}
+        )
+        grow:Play()
+
+        task.wait(0.1)
+        button.BackgroundColor3 = originalColor
+        button.BackgroundTransparency = 0
+    end)
+end
+
+-- Áp dụng cho tất cả nút trong GUI
+local gui = script.Parent
+for _, obj in pairs(gui:GetChildren()) do
+    if obj:IsA("TextButton") or obj:IsA("ImageButton") then
+        applyButtonEffects(obj)
+    end
+end
+
+
+
+-- Dịch vụ Tween
+local TweenService = game:GetService("TweenService")
+local gui = script.Parent
+
+-- Hiệu ứng mở giao diện (fade + scale)
+local function animateOpening(frame)
+    frame.Visible = false
+    frame.Size = UDim2.new(0, 0, 0, 0)
+    frame.BackgroundTransparency = 1
+
+    task.wait(0.2)
+    frame.Visible = true
+
+    TweenService:Create(
+        frame,
+        TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+        {Size = UDim2.new(1, 0, 1, 0), BackgroundTransparency = 0}
+    ):Play()
+end
+
+-- Áp dụng hiệu ứng mở cho tất cả các UI chính
+for _, obj in pairs(gui:GetChildren()) do
+    if obj:IsA("Frame") or obj:IsA("ScrollingFrame") then
+        animateOpening(obj)
+    end
+end
+
+-- Hiệu ứng hover (di chuột vào nút)
+local function applyHoverEffect(button)
+    button.MouseEnter:Connect(function()
+        local hoverTween = TweenService:Create(
+            button,
+            TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+            {Size = UDim2.new(button.Size.X.Scale * 1.1, 0, button.Size.Y.Scale * 1.1, 0),
+             BackgroundColor3 = Color3.fromRGB(255, 223, 0)}
+        )
+        hoverTween:Play()
+    end)
+
+    button.MouseLeave:Connect(function()
+        local leaveTween = TweenService:Create(
+            button,
+            TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+            {Size = UDim2.new(button.Size.X.Scale / 1.1, 0, button.Size.Y.Scale / 1.1, 0),
+             BackgroundColor3 = Color3.fromRGB(255, 255, 0)}
+        )
+        leaveTween:Play()
+    end)
+end
+
+-- Áp dụng hover cho tất cả các nút
+for _, obj in pairs(gui:GetChildren()) do
+    if obj:IsA("TextButton") or obj:IsA("ImageButton") then
+        applyHoverEffect(obj)
+    end
+end
+
+-- Hiệu ứng di chuyển nền
+local function animateBackground(bg)
+    while true do
+        TweenService:Create(
+            bg,
+            TweenInfo.new(5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut, -1, true),
+            {Position = UDim2.new(bg.Position.X.Scale + 0.05, 0, bg.Position.Y.Scale + 0.05, 0)}
+        ):Play()
+        task.wait(5)
+    end
+end
+
+-- Tìm background và áp dụng hiệu ứng nếu có
+for _, obj in pairs(gui:GetChildren()) do
+    if obj:IsA("ImageLabel") and obj.Name == "Background" then
+        animateBackground(obj)
+    end
+end
