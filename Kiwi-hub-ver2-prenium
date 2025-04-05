@@ -326,7 +326,6 @@ end
 
 -- Khởi chạy script
 initKeySystem()
---[[
 getgenv().Team = "Marines"          -- Pirates or Marines
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Phatdepzaicrystal/Phat/refs/heads/main/Phat.lua"))()
 ]] --
