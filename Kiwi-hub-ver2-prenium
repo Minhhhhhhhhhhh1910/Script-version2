@@ -1,3 +1,331 @@
+-- Key System UI Script
+-- Tạo bởi Kiwi
+
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local UserInputService = game:GetService("UserInputService")
+
+-- Cấu hình
+local validKeys = {
+    "1o3h529474j4448fhd111", 
+    "1304h2n3947364204h2o",
+    "103h492hfnd29bfwoev3a",
+    "1o3hg9284h5of83g5g913",
+    "1p3hg9q92y4jxkame9219",
+}
+
+-- Tạo UI
+local function createKeySystem()
+    local player = Players.LocalPlayer
+    local playerGui = player:WaitForChild("PlayerGui")
+    
+    -- Tạo ScreenGui
+    local keySystemGui = Instance.new("ScreenGui")
+    keySystemGui.Name = "KeySystemGui"
+    keySystemGui.ResetOnSpawn = false
+    keySystemGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    keySystemGui.Parent = playerGui
+    
+    -- Background chính với hiệu ứng blur
+    local mainBackground = Instance.new("Frame")
+    mainBackground.Name = "MainBackground"
+    mainBackground.Size = UDim2.new(1, 0, 1, 0)
+    mainBackground.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    mainBackground.BackgroundTransparency = 0.5
+    mainBackground.BorderSizePixel = 0
+    mainBackground.Parent = keySystemGui
+    
+    -- Blur Effect
+    local blur = Instance.new("BlurEffect")
+    blur.Size = 20
+    blur.Parent = game:GetService("Lighting")
+    
+    -- Container panel
+    local keyPanel = Instance.new("Frame")
+    keyPanel.Name = "KeyPanel"
+    keyPanel.Size = UDim2.new(0, 400, 0, 300)
+    keyPanel.Position = UDim2.new(0.5, -200, 0.5, -150)
+    keyPanel.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+    keyPanel.BorderSizePixel = 0
+    keyPanel.AnchorPoint = Vector2.new(0.5, 0.5)
+    keyPanel.Parent = keySystemGui
+    
+    -- Làm tròn các góc
+    local UICorner = Instance.new("UICorner")
+    UICorner.CornerRadius = UDim.new(0, 10)
+    UICorner.Parent = keyPanel
+    
+    -- Gradient cho Panel
+    local UIGradient = Instance.new("UIGradient")
+    UIGradient.Color = ColorSequence.new({
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(45, 45, 45)),
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(25, 25, 25))
+    })
+    UIGradient.Rotation = 45
+    UIGradient.Parent = keyPanel
+    
+    -- Title
+    local titleLabel = Instance.new("TextLabel")
+    titleLabel.Name = "TitleLabel"
+    titleLabel.Size = UDim2.new(1, 0, 0, 60)
+    titleLabel.BackgroundTransparency = 1
+    titleLabel.Font = Enum.Font.GothamBold
+    titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    titleLabel.TextSize = 24
+    titleLabel.Text = "Get Key"
+    titleLabel.Parent = keyPanel
+    
+    -- Đường gạch dưới tiêu đề
+    local titleUnderline = Instance.new("Frame")
+    titleUnderline.Name = "TitleUnderline"
+    titleUnderline.Size = UDim2.new(0.8, 0, 0, 2)
+    titleUnderline.Position = UDim2.new(0.1, 0, 0, 55)
+    titleUnderline.BackgroundColor3 = Color3.fromRGB(255, 75, 75)
+    titleUnderline.BorderSizePixel = 0
+    titleUnderline.Parent = keyPanel
+    
+    -- Description
+    local descLabel = Instance.new("TextLabel")
+    descLabel.Name = "DescLabel"
+    descLabel.Size = UDim2.new(0.9, 0, 0, 40)
+    descLabel.Position = UDim2.new(0.05, 0, 0, 70)
+    descLabel.BackgroundTransparency = 1
+    descLabel.Font = Enum.Font.Gotham
+    descLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+    descLabel.TextSize = 14
+    descLabel.Text = "Nhập key để truy cập vào game"
+    descLabel.TextWrapped = true
+    descLabel.Parent = keyPanel
+    
+    -- Đầu vào key
+    local keyInput = Instance.new("TextBox")
+    keyInput.Name = "KeyInput"
+    keyInput.Size = UDim2.new(0.8, 0, 0, 40)
+    keyInput.Position = UDim2.new(0.1, 0, 0, 120)
+    keyInput.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+    keyInput.BorderSizePixel = 0
+    keyInput.Font = Enum.Font.Gotham
+    keyInput.TextColor3 = Color3.fromRGB(255, 255, 255)
+    keyInput.TextSize = 16
+    keyInput.PlaceholderText = "Nhập key tại đây..."
+    keyInput.Text = ""
+    keyInput.ClearTextOnFocus = false
+    keyInput.Parent = keyPanel
+    
+    -- Bo tròn cho input
+    local inputCorner = Instance.new("UICorner")
+    inputCorner.CornerRadius = UDim.new(0, 6)
+    inputCorner.Parent = keyInput
+    
+    -- Nút Submit
+    local submitButton = Instance.new("TextButton")
+    submitButton.Name = "SubmitButton"
+    submitButton.Size = UDim2.new(0.5, 0, 0, 40)
+    submitButton.Position = UDim2.new(0.25, 0, 0, 180)
+    submitButton.BackgroundColor3 = Color3.fromRGB(255, 75, 75)
+    submitButton.BorderSizePixel = 0
+    submitButton.Font = Enum.Font.GothamBold
+    submitButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+    submitButton.TextSize = 16
+    submitButton.Text = "XÁC NHẬN"
+    submitButton.Parent = keyPanel
+    
+    -- Bo tròn cho nút
+    local buttonCorner = Instance.new("UICorner")
+    buttonCorner.CornerRadius = UDim.new(0, 6)
+    buttonCorner.Parent = submitButton
+    
+    -- Thông báo trạng thái
+    local statusLabel = Instance.new("TextLabel")
+    statusLabel.Name = "StatusLabel"
+    statusLabel.Size = UDim2.new(0.9, 0, 0, 30)
+    statusLabel.Position = UDim2.new(0.05, 0, 0, 240)
+    statusLabel.BackgroundTransparency = 1
+    statusLabel.Font = Enum.Font.Gotham
+    statusLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+    statusLabel.TextSize = 14
+    statusLabel.Text = ""
+    statusLabel.Parent = keyPanel
+    
+    -- Nút Copy Key (tùy chọn)
+    local getKeyButton = Instance.new("TextButton")
+    getKeyButton.Name = "GetKeyButton"
+    getKeyButton.Size = UDim2.new(0.5, 0, 0, 30)
+    getKeyButton.Position = UDim2.new(0.25, 0, 0, 260)
+    getKeyButton.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+    getKeyButton.BorderSizePixel = 0
+    getKeyButton.Font = Enum.Font.Gotham
+    getKeyButton.TextColor3 = Color3.fromRGB(200, 200, 200)
+    getKeyButton.TextSize = 14
+    getKeyButton.Text = "LẤY KEY"
+    getKeyButton.Parent = keyPanel
+    
+    -- Bo tròn cho nút lấy key
+    local getKeyCorner = Instance.new("UICorner")
+    getKeyCorner.CornerRadius = UDim.new(0, 6)
+    getKeyCorner.Parent = getKeyButton
+    
+    -- Hiệu ứng xuất hiện
+    keyPanel.Position = UDim2.new(0.5, -200, 1.5, 0)
+    local appearTween = TweenService:Create(
+        keyPanel,
+        TweenInfo.new(0.8, Enum.EasingStyle.Back, Enum.EasingDirection.Out),
+        {Position = UDim2.new(0.5, -200, 0.5, -150)}
+    )
+    appearTween:Play()
+    
+    -- Xử lý sự kiện
+    submitButton.MouseButton1Click:Connect(function()
+        local enteredKey = keyInput.Text
+        
+        -- Hiệu ứng khi nhấn
+        local clickTween = TweenService:Create(
+            submitButton,
+            TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+            {BackgroundColor3 = Color3.fromRGB(200, 60, 60)}
+        )
+        clickTween:Play()
+        
+        -- Kiểm tra key
+        local keyValid = false
+        for _, validKey in ipairs(validKeys) do
+            if enteredKey == validKey then
+                keyValid = true
+                break
+            end
+        end
+        
+        if keyValid then
+            statusLabel.Text = "Key hợp lệ! Đang vào game..."
+            statusLabel.TextColor3 = Color3.fromRGB(75, 255, 75)
+            
+            -- Hiệu ứng thành công
+            local successTween = TweenService:Create(
+                submitButton,
+                TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+                {BackgroundColor3 = Color3.fromRGB(75, 255, 75)}
+            )
+            successTween:Play()
+            
+            -- Đóng giao diện sau 2 giây
+            wait(2)
+            
+            -- Hiệu ứng biến mất
+            local disappearTween = TweenService:Create(
+                keyPanel,
+                TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.In),
+                {Position = UDim2.new(0.5, -200, 1.5, 0)}
+            )
+            disappearTween:Play()
+            
+            -- Xóa blur và UI
+            disappearTween.Completed:Connect(function()
+                blur:Destroy()
+                keySystemGui:Destroy()
+                
+                -- Tại đây bạn có thể chạy mã để cho phép người chơi truy cập vào game
+                -- VD: loadGame() hoặc teleportToMap()
+            end)
+        else
+            statusLabel.Text = "Key không hợp lệ. Vui lòng thử lại."
+            statusLabel.TextColor3 = Color3.fromRGB(255, 75, 75)
+            
+            -- Hiệu ứng rung khi key sai
+            local originalPosition = keyInput.Position
+            for i = 1, 5 do
+                keyInput.Position = originalPosition + UDim2.new(0, 5, 0, 0)
+                wait(0.05)
+                keyInput.Position = originalPosition - UDim2.new(0, 5, 0, 0)
+                wait(0.05)
+            end
+            keyInput.Position = originalPosition
+            
+            -- Reset màu nút sau 0.5 giây
+            wait(0.5)
+            local resetTween = TweenService:Create(
+                submitButton,
+                TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+                {BackgroundColor3 = Color3.fromRGB(255, 75, 75)}
+            )
+            resetTween:Play()
+        end
+    end)
+    
+    getKeyButton.MouseButton1Click:Connect(function()
+        -- Mở trang web để lấy key hoặc hiển thị hướng dẫn
+        -- Ở đây tôi chỉ thay đổi văn bản để giả lập việc lấy key
+        statusLabel.Text = "Hãy truy cập https://discord.gg/BB5V65cy để lấy key"
+        statusLabel.TextColor3 = Color3.fromRGB(75, 175, 255)
+    end)
+    
+    -- Hiệu ứng hover cho nút
+    submitButton.MouseEnter:Connect(function()
+        local hoverTween = TweenService:Create(
+            submitButton,
+            TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+            {BackgroundColor3 = Color3.fromRGB(255, 100, 100)}
+        )
+        hoverTween:Play()
+    end)
+    
+    submitButton.MouseLeave:Connect(function()
+        local leaveTween = TweenService:Create(
+            submitButton,
+            TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+            {BackgroundColor3 = Color3.fromRGB(255, 75, 75)}
+        )
+        leaveTween:Play()
+    end)
+    
+    -- Kéo thả panel
+    local isDragging = false
+    local dragInput
+    local dragStart
+    local startPos
+    
+    keyPanel.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            isDragging = true
+            dragStart = input.Position
+            startPos = keyPanel.Position
+            
+            input.Changed:Connect(function()
+                if input.UserInputState == Enum.UserInputState.End then
+                    isDragging = false
+                end
+            end)
+        end
+    end)
+    
+    keyPanel.InputChanged:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+            dragInput = input
+        end
+    end)
+    
+    UserInputService.InputChanged:Connect(function(input)
+        if input == dragInput and isDragging then
+            local delta = input.Position - dragStart
+            keyPanel.Position = UDim2.new(
+                startPos.X.Scale, 
+                startPos.X.Offset + delta.X, 
+                startPos.Y.Scale, 
+                startPos.Y.Offset + delta.Y
+            )
+        end
+    end)
+end
+
+-- Khởi chạy hệ thống key
+local function initKeySystem()
+    local player = Players.LocalPlayer or Players.PlayerAdded:Wait()
+    if player then
+        createKeySystem()
+    end
+end
+
+-- Khởi chạy script
+initKeySystem()
 --[[
 getgenv().Team = "Marines"          -- Pirates or Marines
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Phatdepzaicrystal/Phat/refs/heads/main/Phat.lua"))()
@@ -10,18 +338,39 @@ end
 wait(4)
 ------------------------------------------------------------------------------------------------------------------------------
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
-local Window =
-    Fluent:CreateWindow(
+local TweenService = game:GetService("TweenService")
+
+local Window = Fluent:CreateWindow(
     {
-        Title = "Kiwi Hub[Version 2.0]",
+        Title = "Kiwi Hub[Prenium]",
         SubTitle = "Make by Kiwi",
         TabWidth = 170,
         Size = UDim2.fromOffset(530, 350),
         Acrylic = false,
-        Theme = "Darkviolet",
+        Theme = "Aqual",
         MinimizeKey = Enum.KeyCode.End
     }
 )
+
+
+-- Animation xuất hiện
+task.spawn(function()
+    repeat wait() until Window and Window.MainFrame
+    local frame = Window.MainFrame
+    frame.Position = UDim2.new(0.5, 0, 1.2, 0)  -- bắt đầu ngoài màn hình
+    frame.Visible = true
+
+    local tweenInfo = TweenInfo.new(
+        0.5, -- thời gian
+        Enum.EasingStyle.Quad,
+        Enum.EasingDirection.Out
+    )
+
+    local goal = {Position = UDim2.new(0.5, 0, 0.5, 0)} -- vị trí chính giữa
+    local tween = TweenService:Create(frame, tweenInfo, goal)
+    tween:Play()
+end)
+
 
 local Tabs = {
     Sever = Window:AddTab({Title = "Trạng thái và máy chủ|Status And Server", Icon = "loader"}),
@@ -102,9 +451,9 @@ do
     game:GetService("StarterGui"):SetCore(
         "SendNotification",
         {
-            Title = "Kiwi Hub [Prenium]",
+            Title = "Kiwi Hub [Version 2.0]",
             Text = "Loaded Success",
-            Duration = 5
+            Duration = 10
         }
     )
 
@@ -2855,7 +3204,7 @@ do
                                         BillboardGui.StudsOffset = Vector3.new(0, 2.5, 0)
 
                                         TextLabel.Parent = BillboardGui
-                                        TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 0)
+                                        TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
                                         TextLabel.BackgroundTransparency = 1.000
                                         TextLabel.Size = UDim2.new(0, 200, 0, 50)
                                         TextLabel.Font = Enum.Font.GothamBold
@@ -2905,7 +3254,7 @@ do
                                         BillboardGui.StudsOffset = Vector3.new(0, 2.5, 0)
 
                                         TextLabel.Parent = BillboardGui
-                                        TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 0)
+                                        TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
                                         TextLabel.BackgroundTransparency = 1.000
                                         TextLabel.Size = UDim2.new(0, 200, 0, 50)
                                         TextLabel.Font = Enum.Font.GothamBold
@@ -2955,7 +3304,7 @@ do
                                         BillboardGui.StudsOffset = Vector3.new(0, 2.5, 0)
 
                                         TextLabel.Parent = BillboardGui
-                                        TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 0)
+                                        TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
                                         TextLabel.BackgroundTransparency = 1.000
                                         TextLabel.Size = UDim2.new(0, 200, 0, 50)
                                         TextLabel.Font = Enum.Font.GothamBold
@@ -14784,154 +15133,3 @@ spawn(function()
         end
     end
 end);
-
-
-
--- Hiệu ứng mở GUI
-local TweenService = game:GetService("TweenService")
-local gui = script.Parent
-local frame = gui:WaitForChild("MainFrame") -- đổi tên nếu cần
-
-frame.Visible = false
-frame.Size = UDim2.new(0, 0, 0, 0)
-
-task.wait(0.2) -- delay nhỏ
-frame.Visible = true
-
-TweenService:Create(
-    frame,
-    TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-    {Size = UDim2.new(0.5, 0, 0.5, 0)} -- kích thước mong muốn
-):Play()
-
-
-
--- Hiệu ứng khi nhấn vào nút
-local TweenService = game:GetService("TweenService")
-
-local function applyButtonEffects(button)
-    button.MouseButton1Down:Connect(function()
-        -- Hiệu ứng co lại
-        local shrink = TweenService:Create(
-            button,
-            TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-            {Size = UDim2.new(button.Size.X.Scale * 0.9, 0, button.Size.Y.Scale * 0.9, 0)}
-        )
-        shrink:Play()
-        
-        -- Đổi màu khi nhấn
-        local originalColor = button.BackgroundColor3
-        button.BackgroundColor3 = Color3.fromRGB(255, 215, 0) -- Màu vàng sáng hơn
-        
-        -- Rung nhẹ (Shake)
-        local shakeTween = TweenService:Create(
-            button,
-            TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out, 4, true),
-            {Position = button.Position + UDim2.new(0, 2, 0, 0)}
-        )
-        shakeTween:Play()
-
-        task.wait(0.1)
-        
-        -- Phát sáng
-        button.BackgroundTransparency = 0.3
-        
-        -- Hiệu ứng trở lại bình thường
-        local grow = TweenService:Create(
-            button,
-            TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-            {Size = UDim2.new(button.Size.X.Scale / 0.9, 0, button.Size.Y.Scale / 0.9, 0)}
-        )
-        grow:Play()
-
-        task.wait(0.1)
-        button.BackgroundColor3 = originalColor
-        button.BackgroundTransparency = 0
-    end)
-end
-
--- Áp dụng cho tất cả nút trong GUI
-local gui = script.Parent
-for _, obj in pairs(gui:GetChildren()) do
-    if obj:IsA("TextButton") or obj:IsA("ImageButton") then
-        applyButtonEffects(obj)
-    end
-end
-
-
-
--- Dịch vụ Tween
-local TweenService = game:GetService("TweenService")
-local gui = script.Parent
-
--- Hiệu ứng mở giao diện (fade + scale)
-local function animateOpening(frame)
-    frame.Visible = false
-    frame.Size = UDim2.new(0, 0, 0, 0)
-    frame.BackgroundTransparency = 1
-
-    task.wait(0.2)
-    frame.Visible = true
-
-    TweenService:Create(
-        frame,
-        TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-        {Size = UDim2.new(1, 0, 1, 0), BackgroundTransparency = 0}
-    ):Play()
-end
-
--- Áp dụng hiệu ứng mở cho tất cả các UI chính
-for _, obj in pairs(gui:GetChildren()) do
-    if obj:IsA("Frame") or obj:IsA("ScrollingFrame") then
-        animateOpening(obj)
-    end
-end
-
--- Hiệu ứng hover (di chuột vào nút)
-local function applyHoverEffect(button)
-    button.MouseEnter:Connect(function()
-        local hoverTween = TweenService:Create(
-            button,
-            TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-            {Size = UDim2.new(button.Size.X.Scale * 1.1, 0, button.Size.Y.Scale * 1.1, 0),
-             BackgroundColor3 = Color3.fromRGB(255, 223, 0)}
-        )
-        hoverTween:Play()
-    end)
-
-    button.MouseLeave:Connect(function()
-        local leaveTween = TweenService:Create(
-            button,
-            TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-            {Size = UDim2.new(button.Size.X.Scale / 1.1, 0, button.Size.Y.Scale / 1.1, 0),
-             BackgroundColor3 = Color3.fromRGB(255, 255, 0)}
-        )
-        leaveTween:Play()
-    end)
-end
-
--- Áp dụng hover cho tất cả các nút
-for _, obj in pairs(gui:GetChildren()) do
-    if obj:IsA("TextButton") or obj:IsA("ImageButton") then
-        applyHoverEffect(obj)
-    end
-end
-
--- Hiệu ứng di chuyển nền
-local function animateBackground(bg)
-    while true do
-        TweenService:Create(
-            bg,
-            TweenInfo.new(5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut, -1, true),
-            {Position = UDim2.new(bg.Position.X.Scale + 0.05, 0, bg.Position.Y.Scale + 0.05, 0)}
-        ):Play()
-        task.wait(5)
-    end
-end
-
--- Tìm background và áp dụng hiệu ứng nếu có
-for _, obj in pairs(gui:GetChildren()) do
-    if obj:IsA("ImageLabel") and obj.Name == "Background" then
-        animateBackground(obj)
-    end
-end
